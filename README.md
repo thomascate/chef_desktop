@@ -64,3 +64,10 @@ https://github.com/echohack/ansible-osx
 Example that bootstraps the software listed at https://gist.github.com/mwrock/8278331
 
 http://boxstarter.org/package/url?https://gist.githubusercontent.com/mwrock/8278331/raw/e491685abaeb3f7326af5306fd2f07da1bcd7c51/Boxstarter
+
+-- Solving bootstrap problem resources:
+
+https://raw.githubusercontent.com/Nordstrom/chefdk_bootstrap/master/bootstrap
+https://raw.githubusercontent.com/Nordstrom/chefdk_bootstrap/master/bootstrap.ps1
+
+https://github.com/chef/pantry-chef-repo
