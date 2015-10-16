@@ -1,4 +1,4 @@
-name 'chef_desktop'
+name 'desktop'
 maintainer 'David Echols'
 maintainer_email 'dhechols@gmail.com'
 license 'Apache 2.0'
