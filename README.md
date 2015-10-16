@@ -4,10 +4,13 @@ Chef Desktop is a batteries included way of managing your Windows or Mac desktop
 
 Right now, this is the design doc - ala README driven development.
 
-__NOTE__: This works with an experimental fork of chef-dk
+
+## Testing Example
+__NOTE__: This works with an experimental fork of chef-dk, check out
+  https://github.com/talaris/chef-dk
 
 ```
-git clone https://github.com/talaris/chef-dk ../chef-dk
+git clone https://github.com/talaris/chef-dk.git ../chef-dk
 cd ../chef-dk
 bundle install
 bundle exec chef desktop --cookbooks-path ../chef_desktop/cookbooks
