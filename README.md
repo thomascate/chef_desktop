@@ -71,3 +71,10 @@ https://raw.githubusercontent.com/Nordstrom/chefdk_bootstrap/master/bootstrap
 https://raw.githubusercontent.com/Nordstrom/chefdk_bootstrap/master/bootstrap.ps1
 
 https://github.com/chef/pantry-chef-repo
+
+## TO DO
+
+* Support for Windows (win_default, etc.)
+* Support for running multiple cookbooks
+* Bootstrap git
+* Convert over existing cookbooks to new model
