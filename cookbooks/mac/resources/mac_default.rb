@@ -7,7 +7,7 @@ property :value, [String, Integer, Float, true, false]
 action :write do
   execute "#{description} - #{domain} - #{key}" do
     command "defaults write \"#{domain}\" \"#{key}\" #{type} #{value}"
-    user 'davidechols'
+    user 'tcate'
     not_if "defaults read \"#{domain}\" \"#{key}\" | grep ^#{apple_value(value)}$"
   end
 end
