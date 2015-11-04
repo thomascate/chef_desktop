@@ -2,10 +2,13 @@
 
 Chef Desktop is a batteries included way of managing your Windows or Mac desktop with Chef. It provides sane, secure defaults, and makes configuring your desktop a breeze.
 
-Right now, this is the design doc - ala README driven development.
+## Running it with chef-zero
 
+`cd chef_desktop/cookbooks`
 
-## Testing Example
+`chef-client -z -o chef_desktop`
+
+## Running it with our ChefDK fork
 __NOTE__: This works with an experimental fork of chef-dk, check out
   https://github.com/talaris/chef-dk
 

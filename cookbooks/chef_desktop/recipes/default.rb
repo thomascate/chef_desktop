@@ -1,1 +1,1 @@
-include_recipe 'chef_desktop::thomascate'
+include_recipe 'chef_desktop::echohack'
