@@ -1,7 +1,5 @@
 user = 'echohack'
 
-apm 'linter'
-
 execute 'killall Finder' do
   action :nothing
 end
@@ -9,6 +7,12 @@ end
 execute 'killall SystemUIServer' do
   action :nothing
 end
+
+execute 'killall Dock' do
+  action :nothing
+end
+
+apm 'linter'
 
 mac_default 'show hidden files (whose name starts with dot) in finder' do
   domain 'com.apple.finder'
@@ -40,6 +44,13 @@ mac_default 'dont ask to use external drives as a Time Machine backup' do
   user user
   value 1
   notifies :run, 'execute[killall Finder]'
+end
+
+mac_default 'disable natural scrolling' do
+  domain "/Users/#{user}/Library/Preferences/.GlobalPreferences"
+  key 'com.apple.swipescrolldirection'
+  user user
+  value 0
 end
 
 mac_default 'set a fast keyboard repeat rate' do
@@ -78,6 +89,7 @@ mac_default 'speed up mission control animations' do
   key 'expose-animation-duration'
   user user
   value 0.1
+  notifies :run, 'execute[killall Dock]'
 end
 
 mac_default 'remove the auto-hiding dock delay' do
@@ -85,6 +97,16 @@ mac_default 'remove the auto-hiding dock delay' do
   key 'autohide-delay'
   user user
   value 0
+  notifies :run, 'execute[killall Dock]'
+end
+
+mac_default 'use the dark theme' do
+  domain "/Users/#{user}/Library/Preferences/.GlobalPreferences"
+  key 'AppleInterfaceStyle'
+  value 'Dark'
+  user user
+  notifies :run, 'execute[killall Dock]'
+  notifies :run, 'execute[killall SystemUIServer]'
 end
 
 mac_default 'save screenshots in PNG format' do
@@ -94,16 +116,18 @@ mac_default 'save screenshots in PNG format' do
   value 'png'
 end
 
+screenshots_dir = "/Users/#{user}/screenshots"
+
+directory screenshots_dir do
+  owner user
+end
+
 mac_default 'save screenshots to user screenshots directory instead of desktop' do
   domain 'com.apple.screencapture'
   key 'location'
   user user
-  value '/Users/echohack/screenshots'
+  value screenshots_dir
   notifies :run, 'execute[killall SystemUIServer]'
-end
-
-directory "/Users/#{user}/screenshots" do
-  owner user
 end
 
 mac_default 'disable menu transparency' do
@@ -130,7 +154,7 @@ mac_default 'disable spotlight universal search (dont send info to Apple)' do
 end
 
 mac_default 'disable mouse enlargement with jiggle (OSX 10.11 El Capitan fix)' do
-  domain '~/Library/Preferences/.GlobalPreferences'
+  domain "/Users/#{user}/Library/Preferences/.GlobalPreferences"
   key 'CGDisableCursorLocationMagnification'
   user user
   value 1

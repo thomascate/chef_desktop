@@ -2,7 +2,7 @@ resource_name :mac_default
 property :description, name_property: true
 property :domain, String, identity: true
 property :key, String, identity: true
-property :user, String, identity: true
+property :user, String, identity: true, default: 'root'
 property :value, [String, Integer, Float, true, false]
 
 def to_f_i_s(v)
