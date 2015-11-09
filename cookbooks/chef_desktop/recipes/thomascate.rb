@@ -73,7 +73,7 @@ mac_default 'save screenshots to user screenshots directory instead of desktop' 
   domain 'com.apple.screencapture'
   key 'location'
   user user
-  value '/Users/echohack/screenshots'
+  value '/Users/tcate/screenshots'
   notifies :run, 'execute[killall SystemUIServer]'
 end
 
@@ -109,4 +109,28 @@ mac_default 'improve bluetooth initial audio quality' do
   key 'Apple Initial Bitpool (editable)'
   user user
   value 70
+end
+
+mac_default 'disable system beep' do
+  domain 'com.apple.sound.beep'
+  key 'feedback'
+  user user
+  value 0
+  notifies :run, 'execute[killall SystemUIServer]'
+end
+
+mac_default 'disable UI sounds' do
+  domain 'com.apple.systemsound'
+  key 'com.apple.sound.uiaudio.enabled'
+  user user
+  value 0
+  notifies :run, 'execute[killall SystemUIServer]'
+end
+
+mac_default 'disable UI alert' do
+  domain 'com.apple.systemsound'
+  key 'com.apple.sound.beep.volume'
+  user user
+  value 0
+  notifies :run, 'execute[killall SystemUIServer]'
 end
