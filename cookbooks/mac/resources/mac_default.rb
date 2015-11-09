@@ -20,9 +20,6 @@ end
 
 action :write do
   converge_if_changed do
-    execute "#{description} - #{domain} - #{key} as #{user}" do
-      command "defaults write \"#{domain}\" \"#{key}\" #{value}"
-      user user
-    end
+    execute "sudo -u #{user} defaults write \"#{domain}\" \"#{key}\" #{value}"
   end
 end
