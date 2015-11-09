@@ -73,7 +73,7 @@ mac_default 'save screenshots to user screenshots directory instead of desktop' 
   domain 'com.apple.screencapture'
   key 'location'
   user user
-  value '/Users/tcate/screenshots'
+  value "/Users/#{user}/screenshots"
   notifies :run, 'execute[killall SystemUIServer]'
 end
 
