@@ -12,7 +12,7 @@ rescue ArgumentError
 end
 
 load_current_value do
-  defaults = `defaults read \"#{domain}\" \"#{key}\"`
+  defaults = `sudo -u #{user} defaults read \"#{domain}\" \"#{key}\"`
   defaults = defaults.chomp
   defaults = to_f_i_s(defaults)
   value defaults
@@ -20,7 +20,7 @@ end
 
 action :write do
   converge_if_changed do
-    execute "#{description} - #{domain} - #{key}" do
+    execute "#{description} - #{domain} - #{key} as #{user}" do
       command "defaults write \"#{domain}\" \"#{key}\" #{value}"
       user user
     end

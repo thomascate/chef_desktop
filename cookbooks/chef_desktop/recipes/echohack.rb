@@ -1,4 +1,4 @@
-user = 'echohack'
+user = 'davidechols'
 
 execute 'killall Finder' do
   action :nothing
@@ -161,6 +161,13 @@ mac_default 'disable mouse enlargement with jiggle (OSX 10.11 El Capitan fix)' d
   notifies :run, 'execute[killall SystemUIServer]'
 end
 
+mac_default 'disable annoying UI error sound (OSX 10.10 and below fix)' do
+  domain 'com.apple.systemsound'
+  key 'com.apple.sound.beep.volume'
+  user user
+  value 0
+  notifies :run, 'execute[killall SystemUIServer]'
+end
 
 mac_default 'improve bluetooth minimum audio quality' do
   domain 'com.apple.BluetoothAudioAgent'
