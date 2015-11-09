@@ -1,4 +1,4 @@
-user = 'davidechols'
+user = 'echohack'
 
 execute 'killall Finder' do
   action :nothing
